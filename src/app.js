@@ -1,17 +1,26 @@
 import express from 'express'
-import morgan from 'morgan';
+import morgan from 'morgan'
+import taskRoutes from './routes/tasks.routes.js'
+import authRoutes from './routes/auth.routes.js'
 
 
 const app = express()
 
-app.use(morgan('dev'))
+// Middlewares
+app.use(morgan("dev"))
+app.use(express.json())
+app.use(express.urlencoded({ extended:false }))
 
-app.get('/', (req, res) => res.json({message: " Bienvenido a mi API"}))
+// Routes
+app.get('/', (req, res) => res.json({ message: " Bienvenido a mi API" }))
+app.use('/api',taskRoutes)
+app.use('/api',authRoutes)
 
+// Error Hander
 app.use((err, req, res, next) => {
     res.status(500).json({
         status: "error",
-        message: err.message
+        message: err.message,
     })
 })
 
