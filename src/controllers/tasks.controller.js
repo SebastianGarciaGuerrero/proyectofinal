@@ -1,7 +1,10 @@
 import { pool } from "../db.js";
 
 export const getAllTasks = async (req, res, next) => {
-  const result = await pool.query("SELECT * FROM task");
+  console.log(req.userId);
+  const result = await pool.query("SELECT * FROM task WHERE user_id = $1", [
+    req.userId,
+  ]);
   return res.json(result.rows);
 };
 
@@ -20,8 +23,8 @@ export const getTask = async (req, res) => {
 export const createTask = async (req, res, next) => {
   const { title, description } = req.body;
   const result = await pool.query(
-    "INSERT INTO task (title, description) VALUES ($1, $2) RETURNING *",
-    [title, description]
+    "INSERT INTO task (title, description, user_id) VALUES ($1, $2, $3) RETURNING *",
+    [title, description, req.userId]
   );
   res.json(result.rows[0]);
 };
@@ -34,13 +37,13 @@ export const updateTask = async (req, res) => {
     [title, description, id]
   );
 
-  if(result.rowCount === 0) {
+  if (result.rowCount === 0) {
     return res.status(404).json({
       message: "No existe una tarea con ese id",
-    })
+    });
   }
 
-  return res.json(result.rows[0])
+  return res.json(result.rows[0]);
 };
 
 export const deleteTask = async (req, res) => {
