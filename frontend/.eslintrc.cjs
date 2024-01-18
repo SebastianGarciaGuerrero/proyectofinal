@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = {
   env: { browser: true, es2020: true },
   extends: [
@@ -11,5 +13,6 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    "react/prop-types": 0
   },
 }
