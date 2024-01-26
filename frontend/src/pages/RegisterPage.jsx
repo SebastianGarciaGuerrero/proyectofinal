@@ -9,17 +9,24 @@ export const RegisterPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signup } = useAuth();
-  const navigate = useNavigate()
+  const { signup, errors: signupErrors } = useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
-    await signup(data);
-    navigate('/profile')
+    const user = await signup(data);
+
+    if (user) {
+      navigate("/profile");
+    }
   });
 
   return (
     <div className="h-[calc(100vh-64px)] flex items-center justify-center">
       <Card>
+        {signupErrors &&
+          signupErrors.map((err) => (
+            <p className="text-red-500 text-center">{err}</p>
+          ))}
         <div className="text-2xl font-bold">Registro</div>
 
         <form onSubmit={onSubmit}>
