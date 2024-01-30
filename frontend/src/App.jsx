@@ -1,5 +1,7 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
+
 import { useAuth } from "./context/AuthContext";
+import { TaskProvider } from "./context/TaskContext";
 
 import { Navbar } from "./components/navbar/Navbar";
 import { Container } from "./components/ui";
@@ -16,7 +18,6 @@ import { NotFound } from "./pages/NotFound";
 
 function App() {
   const { isAuth } = useAuth();
-  console.log(isAuth);
 
   return (
     <>
@@ -40,9 +41,18 @@ function App() {
               <ProtectedRoute isAllowed={isAuth} redirectTo={"/login"} />
             }
           >
-            <Route path="/tasks" element={<TasksPage />} />
-            <Route path="/tasks/new" element={<TaskFormPage />} />
-            <Route path="/tasks/1/edit" element={<TaskFormPage />} />
+            <Route
+              element={
+                <TaskProvider>
+                  <Outlet />
+                </TaskProvider>
+              }
+            >
+              <Route path="/tasks" element={<TasksPage />} />
+              <Route path="/tasks/new" element={<TaskFormPage />} />
+              <Route path="/tasks/1/edit" element={<TaskFormPage />} />
+            </Route>
+
             <Route path="/profile" element={<ProfilePage />} />
           </Route>
 

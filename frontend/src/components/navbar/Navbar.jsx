@@ -5,7 +5,6 @@ import { useAuth } from "../../context/AuthContext";
 
 export const Navbar = () => {
   const location = useLocation();
-  console.log(location);
 
   const { isAuth, signout } = useAuth();
 
