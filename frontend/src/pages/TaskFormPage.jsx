@@ -1,7 +1,7 @@
 import { Card, Input, Label, Textarea, Button } from "../components/ui";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { useTasks } from "../context/TaskContext";
 
 export const TaskFormPage = () => {
@@ -9,27 +9,45 @@ export const TaskFormPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
-  const [postError, setPostError] = useState([]);
   const navigate = useNavigate();
-  const { createTask } = useTasks();
+  const { createTask, updateTask, loadTask, errors: tasksErrors } = useTasks();
+  const params = useParams();
 
   const onSubmit = handleSubmit(async (data) => {
-    const task = await createTask(data);
+    let task;
+
+    if (!params.id) {
+      task = await createTask(data);
+    } else {
+      task = await updateTask(params.id, data);
+    }
     if (task) {
       navigate("/tasks");
     }
   });
 
+  useEffect(() => {
+    if (params.id) {
+      loadTask(params.id).then((task) => {
+        setValue("title", task.title);
+        setValue("description", task.description);
+      });
+    }
+  }, []);
+
   return (
     <div className="flex h-[80vh] justify-center items-center">
       <Card>
-        {postError.map((error, i) => (
+        {tasksErrors.map((error, i) => (
           <p className="text-red-500" key={i}>
             {error}
           </p>
         ))}
-        <h2 className="text-3xl font-bold my-4">Create Task</h2>
+        <h2 className="text-3xl font-bold my-4">
+          {params.id ? "Edit task" : "Crear task"}
+        </h2>
         <form onSubmit={onSubmit}>
           <Label htmlFor="title">Title</Label>
           <Input
@@ -50,7 +68,7 @@ export const TaskFormPage = () => {
             rows={3}
             {...register("description")}
           ></Textarea>
-          <Button>Create</Button>
+          <Button>{params.id ? "Edit task" : "Crear task"}</Button>
         </form>
       </Card>
     </div>

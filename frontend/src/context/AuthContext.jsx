@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
   const [errors, setErrors] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const signin = async (data) => {
     try {
@@ -52,23 +53,26 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signout = async () => {
-    await axios.post("/signout")
-    setUser(null)
-    setIsAuth(false)
-  }
+    await axios.post("/signout");
+    setUser(null);
+    setIsAuth(false);
+  };
 
   useEffect(() => {
+    setLoading(false);
     if (Cookie.get("token")) {
       axios
         .get("/profile")
         .then((res) => {
           setUser(res.data);
           setIsAuth(true);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
           setUser(null);
           setIsAuth(false);
+          setLoading(false);
         });
     }
   }, []);
@@ -81,7 +85,8 @@ export const AuthProvider = ({ children }) => {
         errors,
         signup,
         signin,
-        signout
+        signout,
+        loading
       }}
     >
       {children}

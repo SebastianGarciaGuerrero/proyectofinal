@@ -17,7 +17,10 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { NotFound } from "./pages/NotFound";
 
 function App() {
-  const { isAuth } = useAuth();
+  const { isAuth, loading } = useAuth();
+  console.log(loading);
+
+  if (loading) return <h1>Cargando...</h1>;
 
   return (
     <>
@@ -50,7 +53,7 @@ function App() {
             >
               <Route path="/tasks" element={<TasksPage />} />
               <Route path="/tasks/new" element={<TaskFormPage />} />
-              <Route path="/tasks/1/edit" element={<TaskFormPage />} />
+              <Route path="/tasks/:id/edit" element={<TaskFormPage />} />
             </Route>
 
             <Route path="/profile" element={<ProfilePage />} />
