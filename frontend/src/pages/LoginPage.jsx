@@ -4,23 +4,25 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 
 export const LoginPage = () => {
-  const { register, handleSubmit } = useForm();
-  const { signin, errors, isAuth } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { signin, errors: loginErrors } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
     const user = await signin(data);
 
-    if (user) {
-      navigate("/profile");
-    }
+    if (user) navigate("/tasks");
   });
 
   return (
     <Container className="h-[calc(100vh-10rem)] flex justify-center items-center">
       <Card>
-        {errors &&
-          errors.map((err) => (
+        {loginErrors &&
+          loginErrors.map((err) => (
             <p className="text-red-500 text-center">{err}</p>
           ))}
 
@@ -33,6 +35,7 @@ export const LoginPage = () => {
             placeholder="Email"
             {...register("email", { required: true })}
           />
+          {errors.email && <p className="text-red-500"> Email is required </p>}
 
           <Label htmlFor="password">Password</Label>
           <Input
@@ -40,10 +43,13 @@ export const LoginPage = () => {
             placeholder="Password"
             {...register("password", { required: true })}
           />
+          {errors.password && (
+            <p className="text-red-500"> Password is required </p>
+          )}
 
           <Button>Sign in</Button>
           <div className="flex justify-between my-4">
-            <p>¿No tienes una cuenta?</p>
+            <p className="mr-4">¿No tienes una cuenta?</p>
             <Link to="/register" className="font-bold">
               ¡Regístrate!
             </Link>

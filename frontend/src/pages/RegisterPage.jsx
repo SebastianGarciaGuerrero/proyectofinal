@@ -15,9 +15,7 @@ export const RegisterPage = () => {
   const onSubmit = handleSubmit(async (data) => {
     const user = await signup(data);
 
-    if (user) {
-      navigate("/profile");
-    }
+    if (user) navigate("/tasks");
   });
 
   return (
@@ -61,7 +59,7 @@ export const RegisterPage = () => {
           <Button>Register</Button>
 
           <div className="flex justify-between my-4">
-            <p>¿Ya tienes una cuenta?</p>
+            <p className="mr-4">¿Ya tienes una cuenta?</p>
             <Link to="/login" className="font-bold">
               ¡Inscríbete!
             </Link>

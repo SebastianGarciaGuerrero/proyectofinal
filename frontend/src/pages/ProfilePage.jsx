@@ -1,11 +1,10 @@
-import { useAuth } from "../context/AuthContext"
+import { useAuth } from "../context/AuthContext";
 
 export const ProfilePage = () => {
-
-  const {user} = useAuth()
+  const { user } = useAuth();
   return (
     <div>
-      {JSON.stringify(user, null, 2)}
+      <pre>{JSON.stringify(user, null, 2)}</pre>
     </div>
-  )
-}
+  );
+};

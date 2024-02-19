@@ -59,23 +59,30 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setLoading(false);
+    setLoading(true);
     if (Cookie.get("token")) {
       axios
         .get("/profile")
         .then((res) => {
           setUser(res.data);
           setIsAuth(true);
-          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
           setUser(null);
           setIsAuth(false);
-          setLoading(false);
         });
     }
+    setLoading(false);
   }, []);
+
+  useEffect(() => {
+    const clean = setTimeout(() => {
+      setErrors(null);
+    }, 5000);
+
+    return () => clearTimeout(clean);
+  }, [errors]);
 
   return (
     <AuthContext.Provider
@@ -86,7 +93,7 @@ export const AuthProvider = ({ children }) => {
         signup,
         signin,
         signout,
-        loading
+        loading,
       }}
     >
       {children}
