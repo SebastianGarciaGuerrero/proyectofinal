@@ -33,12 +33,14 @@ export const TaskFormPage = () => {
       loadTask(params.id).then((task) => {
         setValue("title", task.title);
         setValue("description", task.description);
+        setValue("image_url", task.image_url || "");
+        setValue("price", task.price || "");
       });
     }
   }, []);
 
   return (
-    <div className="flex h-[80vh] justify-center items-center">
+    <div className="flex h-[85vh] justify-center items-center">
       <Card>
         {tasksErrors.map((error, i) => (
           <p className="text-red-500" key={i}>
@@ -48,7 +50,7 @@ export const TaskFormPage = () => {
         <h2 className="text-3xl font-bold my-4">
           {params.id ? "Edit task" : "Crear task"}
         </h2>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} encType="multipart/form-data">
           <Label htmlFor="title">Title</Label>
           <Input
             type="text"
@@ -62,12 +64,27 @@ export const TaskFormPage = () => {
             <span className="text-red-500">Título es requerido</span>
           )}
 
+          <Label htmlFor="image_url">Imagen</Label>
+          <Input
+            type="text"
+            placeholder="Inserte imagen"
+            {...register("image_url")}
+          />
+
           <Label htmlFor="description"> Description </Label>
           <Textarea
             placeholder="Description"
             rows={3}
             {...register("description")}
           ></Textarea>
+
+          <Label htmlFor="price">Precio</Label>
+          <Input
+            type="text"
+            placeholder="Precio"
+            {...register("price")}
+          />
+
           <Button>{params.id ? "Edit task" : "Crear task"}</Button>
         </form>
       </Card>

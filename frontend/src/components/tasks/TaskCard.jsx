@@ -12,7 +12,15 @@ export const TaskCard = ({ task }) => {
     <Card key={task.id} className="px-7 py-4 flex flex-col justify-center">
       <div>
         <h1 className="text-2xl font-bold">{task.title}</h1>
+        {task.image_url && (
+          <img
+            src={task.image_url}
+            alt={`Imagen de ${task.title}`}
+            className="my-4"
+          />
+        )}
         <p>{task.description}</p>
+        <p className="text-2xl font-bold">$ {task.price}</p>
       </div>
       <div className="my-2 flex justify-end gap-x-2">
         <Button onClick={() => navigate(`/tasks/${task.id}/edit`)}>

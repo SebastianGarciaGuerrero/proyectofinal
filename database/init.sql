@@ -5,6 +5,10 @@ CREATE TABLE task(
 );
 
 ALTER TABLE task ADD COLUMN user_id INTEGER REFERENCES users(id);
+ALTER TABLE task
+ADD COLUMN image_url VARCHAR(255),
+ADD COLUMN price DECIMAL(10, 2);
+
 
 ALTER TABLE task DROP CONSTRAINT task_title_key;
 

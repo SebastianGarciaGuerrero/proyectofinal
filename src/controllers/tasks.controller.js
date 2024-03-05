@@ -21,20 +21,20 @@ export const getTask = async (req, res) => {
 };
 
 export const createTask = async (req, res, next) => {
-  const { title, description } = req.body;
+  const { title, description, image_url, price } = req.body;
   const result = await pool.query(
-    "INSERT INTO task (title, description, user_id) VALUES ($1, $2, $3) RETURNING *",
-    [title, description, req.userId]
+    "INSERT INTO task (title, description, image_url, price, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+    [title, description, image_url, price, req.userId]
   );
   res.json(result.rows[0]);
 };
 
 export const updateTask = async (req, res) => {
   const id = req.params.id;
-  const { title, description } = req.body;
+  const { title, description, image_url, price } = req.body;
   const result = await pool.query(
-    "UPDATE task SET title = $1, description = $2 WHERE id = $3 RETURNING *",
-    [title, description, id]
+    "UPDATE task SET title = $1, description = $2, image_url = $3, price = $4 WHERE id = $5 RETURNING *",
+    [title, description, image_url, price, id]
   );
 
   if (result.rowCount === 0) {
