@@ -1,7 +1,7 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 
 import { useAuth } from "./context/AuthContext";
-import { TaskProvider } from "./context/TaskContext";
+import { ProductProvider } from "./context/ProductContext";
 
 import { Navbar } from "./components/navbar/Navbar";
 import { Container } from "./components/ui";
@@ -11,8 +11,8 @@ import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
-import { TasksPage } from "./pages/TasksPage";
-import { TaskFormPage } from "./pages/TaskFormPage";
+import { ProductsPage } from "./pages/ProductsPage";
+import { ProductFormPage } from "./pages/ProductFormPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { NotFound } from "./pages/NotFound";
 
@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route
             element={
-              <ProtectedRoute isAllowed={!isAuth} redirectTo={"/tasks"} />
+              <ProtectedRoute isAllowed={!isAuth} redirectTo={"/products"} />
             }
           >
             <Route path="/" element={<HomePage />} />
@@ -45,14 +45,14 @@ function App() {
           >
             <Route
               element={
-                <TaskProvider>
+                <ProductProvider>
                   <Outlet />
-                </TaskProvider>
+                </ProductProvider>
               }
             >
-              <Route path="/tasks" element={<TasksPage />} />
-              <Route path="/tasks/new" element={<TaskFormPage />} />
-              <Route path="/tasks/:id/edit" element={<TaskFormPage />} />
+              <Route path="/productos" element={<ProductsPage />} />
+              <Route path="/productos/new" element={<ProductFormPage />} />
+              <Route path="/productos/:id/edit" element={<ProductFormPage />} />
             </Route>
 
             <Route path="/profile" element={<ProfilePage />} />

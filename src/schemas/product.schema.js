@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const createTaskSchema = z.object({
+export const createProductSchema = z.object({
   title: z
     .string({
       required_error: "El título es requerido",
@@ -18,7 +18,7 @@ export const createTaskSchema = z.object({
     .optional(),
 });
 
-export const updateTaskSchema = z.object({
+export const updateProductSchema = z.object({
   title: z
     .string({
       required_error: "El título es requerido",

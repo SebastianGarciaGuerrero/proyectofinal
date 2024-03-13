@@ -2,17 +2,18 @@ import express from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import multer from "multer";
 
-import taskRoutes from "./routes/tasks.routes.js";
+import productRoutes from "./routes/products.routes.js";
 import authRoutes from "./routes/auth.routes.js";
+import { ORIGIN } from "./config.js";
+import { pool } from "./db.js";
 
 const app = express();
 
 // Middlewares
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ORIGIN,
     credentials: true,
   })
 );
@@ -23,7 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.get("/", (req, res) => res.json({ message: " Bienvenido a mi API" }));
-app.use("/api", taskRoutes);
+app.get("/api/ping", async (req, res) => {
+  const result = await pool.query("SELECT NOW()");
+  return res.json(result.rows[0]);
+});
+app.use("/api", productRoutes);
 app.use("/api", authRoutes);
 
 // Error Hander

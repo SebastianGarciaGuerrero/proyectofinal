@@ -1,6 +1,7 @@
 import { BiTask } from "react-icons/bi";
 import { MdTaskAlt } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 export const publicRoutes = [
   {
@@ -19,13 +20,13 @@ export const publicRoutes = [
 
 export const privateRoutes = [
   {
-    name: "Tasks",
-    path: "/tasks",
+    name: "Products",
+    path: "/products",
     icon: <BiTask className="w-5 h-5" />
   },
   {
     name: "Agregar",
-    path: "/tasks/new",
+    path: "/products/new",
     icon: <MdTaskAlt className="w-5 h-5" />
   },
   {
@@ -33,4 +34,9 @@ export const privateRoutes = [
     path: "/profile",
     icon: <CgProfile className="w-5 h-5" />
   },
+  {
+    name: "Carrito",
+    path: "/carrito",
+    icon: <MdOutlineShoppingCart className="w-5 h-5"/>
+  }
 ];

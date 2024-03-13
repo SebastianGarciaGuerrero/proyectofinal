@@ -1,16 +1,16 @@
-CREATE TABLE task(
+CREATE TABLE product(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) UNIQUE NOT NULL,
     description TEXT
 );
 
-ALTER TABLE task ADD COLUMN user_id INTEGER REFERENCES users(id);
-ALTER TABLE task
+ALTER TABLE product ADD COLUMN user_id INTEGER REFERENCES users(id);
+ALTER TABLE product
 ADD COLUMN image_url VARCHAR(255),
 ADD COLUMN price DECIMAL(10, 2);
 
 
-ALTER TABLE task DROP CONSTRAINT task_title_key;
+ALTER TABLE product DROP CONSTRAINT product_title_key;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,

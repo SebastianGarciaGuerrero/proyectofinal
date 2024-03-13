@@ -1,29 +1,29 @@
 import { Card, Button } from "../ui";
-import { useTasks } from "../../context/TaskContext";
+import { useProducts } from "../../context/ProductContext";
 import { useNavigate } from "react-router-dom";
 import { PiTrashSimpleLight } from "react-icons/pi";
 import { BiPencil } from "react-icons/bi";
 
-export const TaskCard = ({ task }) => {
-  const { deleteTask } = useTasks();
+export const ProductCard = ({ product }) => {
+  const { deleteProduct } = useProducts();
   const navigate = useNavigate();
 
   return (
-    <Card key={task.id} className="px-7 py-4 flex flex-col justify-center">
+    <Card key={product.id} className="px-7 py-4 flex flex-col justify-center">
       <div>
-        <h1 className="text-2xl font-bold">{task.title}</h1>
-        {task.image_url && (
+        <h1 className="text-2xl font-bold">{product.title}</h1>
+        {product.image_url && (
           <img
-            src={task.image_url}
-            alt={`Imagen de ${task.title}`}
+            src={product.image_url}
+            alt={`Imagen de ${product.title}`}
             className="my-4"
           />
         )}
-        <p>{task.description}</p>
-        <p className="text-2xl font-bold">$ {task.price}</p>
+        <p>{product.description}</p>
+        <p className="text-2xl font-bold">$ {product.price}</p>
       </div>
       <div className="my-2 flex justify-end gap-x-2">
-        <Button onClick={() => navigate(`/tasks/${task.id}/edit`)}>
+        <Button onClick={() => navigate(`/products/${product.id}/edit`)}>
           <BiPencil className="text-white" />
           Editar
         </Button>
@@ -31,9 +31,9 @@ export const TaskCard = ({ task }) => {
           className="bg-red-700 hover:bg-red-600"
           onClick={async () => {
             if (
-              window.confirm("¿Estás seguro que quieres eliminar esta tarea?")
+              window.confirm("¿Estás seguro que quieres eliminar este producto?")
             ) {
-              deleteTask(task.id);
+              deleteProduct(product.id);
             }
           }}
         >

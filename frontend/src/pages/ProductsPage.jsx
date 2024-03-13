@@ -1,15 +1,15 @@
 import { useEffect } from "react";
-import { TaskCard } from "../components/tasks/TaskCard";
-import { useTasks } from "../context/TaskContext";
+import { ProductCard } from "../components/products/ProductCard";
+import { useProducts } from "../context/ProductContext";
 
-export const TasksPage = () => {
-  const { tasks, loadTasks } = useTasks();
+export const ProductsPage = () => {
+  const { products, loadProducts } = useProducts();
 
   useEffect(() => {
-    loadTasks();
+    loadProducts();
   }, []);
 
-  if (tasks.length === 0)
+  if (products.length === 0)
     return (
       <div className="flex justify-center items-center h-[calc(100vh-10rem)]">
         <h1 className="text-3xl font-bold">¡No hay ninguna tarea hecha!</h1>
@@ -18,8 +18,8 @@ export const TasksPage = () => {
 
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
-      {tasks.map((task) => (
-        <TaskCard task={task} key={task.id} />
+      {products.map((product) => (
+        <ProductCard product={product} key={product.id} />
       ))}
     </div>
   );

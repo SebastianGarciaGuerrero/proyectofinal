@@ -2,9 +2,9 @@ import { Card, Input, Label, Textarea, Button } from "../components/ui";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useTasks } from "../context/TaskContext";
+import { useProducts } from "../context/ProductContext";
 
-export const TaskFormPage = () => {
+export const ProductFormPage = () => {
   const {
     register,
     handleSubmit,
@@ -12,29 +12,29 @@ export const TaskFormPage = () => {
     setValue,
   } = useForm();
   const navigate = useNavigate();
-  const { createTask, updateTask, loadTask, errors: tasksErrors } = useTasks();
+  const { createProduct, updateProduct, loadProducts, errors: productsErrors } = useProducts();
   const params = useParams();
 
   const onSubmit = handleSubmit(async (data) => {
-    let task;
+    let product;
 
     if (!params.id) {
-      task = await createTask(data);
+      product = await createProduct(data);
     } else {
-      task = await updateTask(params.id, data);
+      product = await updateProduct(params.id, data);
     }
-    if (task) {
-      navigate("/tasks");
+    if (product) {
+      navigate("/product");
     }
   });
 
   useEffect(() => {
     if (params.id) {
-      loadTask(params.id).then((task) => {
-        setValue("title", task.title);
-        setValue("description", task.description);
-        setValue("image_url", task.image_url || "");
-        setValue("price", task.price || "");
+      loadProducts(params.id).then((product) => {
+        setValue("title", product.title);
+        setValue("description", product.description);
+        setValue("image_url", product.image_url || "");
+        setValue("price", product.price || "");
       });
     }
   }, []);
@@ -42,13 +42,13 @@ export const TaskFormPage = () => {
   return (
     <div className="flex h-[85vh] justify-center items-center">
       <Card>
-        {tasksErrors.map((error, i) => (
+        {productsErrors.map((error, i) => (
           <p className="text-red-500" key={i}>
             {error}
           </p>
         ))}
         <h2 className="text-3xl font-bold my-4">
-          {params.id ? "Edit task" : "Crear task"}
+          {params.id ? "Edit product" : "Crear product"}
         </h2>
         <form onSubmit={onSubmit} encType="multipart/form-data">
           <Label htmlFor="title">Title</Label>
@@ -85,7 +85,7 @@ export const TaskFormPage = () => {
             {...register("price")}
           />
 
-          <Button>{params.id ? "Edit task" : "Crear task"}</Button>
+          <Button>{params.id ? "Edit product" : "Crear product"}</Button>
         </form>
       </Card>
     </div>
