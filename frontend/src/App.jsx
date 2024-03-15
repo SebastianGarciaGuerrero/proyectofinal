@@ -50,9 +50,9 @@ function App() {
                 </ProductProvider>
               }
             >
-              <Route path="/productos" element={<ProductsPage />} />
-              <Route path="/productos/new" element={<ProductFormPage />} />
-              <Route path="/productos/:id/edit" element={<ProductFormPage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/products/new" element={<ProductFormPage />} />
+              <Route path="/products/:id/edit" element={<ProductFormPage />} />
             </Route>
 
             <Route path="/profile" element={<ProfilePage />} />

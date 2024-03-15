@@ -12,7 +12,7 @@ export const ProductFormPage = () => {
     setValue,
   } = useForm();
   const navigate = useNavigate();
-  const { createProduct, updateProduct, loadProducts, errors: productsErrors } = useProducts();
+  const { createProduct, updateProduct, loadProduct, errors: productsErrors } = useProducts();
   const params = useParams();
 
   const onSubmit = handleSubmit(async (data) => {
@@ -24,13 +24,13 @@ export const ProductFormPage = () => {
       product = await updateProduct(params.id, data);
     }
     if (product) {
-      navigate("/product");
+      navigate("/products");
     }
   });
 
   useEffect(() => {
     if (params.id) {
-      loadProducts(params.id).then((product) => {
+      loadProduct(params.id).then((product) => {
         setValue("title", product.title);
         setValue("description", product.description);
         setValue("image_url", product.image_url || "");
