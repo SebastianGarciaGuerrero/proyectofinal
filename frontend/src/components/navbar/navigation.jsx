@@ -5,6 +5,11 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 export const publicRoutes = [
   {
+    name: "Products",
+    path: "/products",
+    icon: <BiTask className="w-5 h-5" />,
+  },
+  {
     name: "About",
     path: "/about",
   },
@@ -22,21 +27,21 @@ export const privateRoutes = [
   {
     name: "Products",
     path: "/products",
-    icon: <BiTask className="w-5 h-5" />
+    icon: <BiTask className="w-5 h-5" />,
   },
   {
     name: "Agregar",
     path: "/products/new",
-    icon: <MdTaskAlt className="w-5 h-5" />
+    icon: <MdTaskAlt className="w-5 h-5" />,
   },
   {
     name: "Profile",
     path: "/profile",
-    icon: <CgProfile className="w-5 h-5" />
+    icon: <CgProfile className="w-5 h-5" />,
   },
   {
     name: "Carrito",
     path: "/carrito",
-    icon: <MdOutlineShoppingCart className="w-5 h-5"/>
-  }
+    icon: <MdOutlineShoppingCart className="w-5 h-5" />,
+  },
 ];

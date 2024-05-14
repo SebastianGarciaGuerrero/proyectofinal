@@ -6,3 +6,25 @@ body {
   background: #101010;
   color:aliceblue;
 }
+
+.hero-section {
+  background-image: url('https://i.pinimg.com/564x/ba/56/68/ba56686b0b85282c34d5fd29f52e61aa.jpg');
+  background-size: contain; /* Para mantener la relación de aspecto de la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-position: right center; /* Ajusta la posición de la imagen */
+  background-color: #f2f2f2;
+  height: 400px; /* Ajusta la altura según sea necesario */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  background-color: #f2f2f2; /* Color de fondo blanco */
+  padding: 20px; /* Añade relleno para separar el texto del borde */
+}

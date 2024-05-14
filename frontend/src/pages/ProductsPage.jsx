@@ -12,7 +12,7 @@ export const ProductsPage = () => {
   if (products.length === 0)
     return (
       <div className="flex justify-center items-center h-[calc(100vh-10rem)]">
-        <h1 className="text-3xl font-bold">¡No hay ninguna tarea hecha!</h1>
+        <h1 className="text-3xl font-bold">¡No hay nigún producto disponible por el momento!</h1>
       </div>
     );
 

@@ -1,12 +1,23 @@
 import { useAuth } from "../context/AuthContext";
-import { Card } from "../components/ui";
+import { Card, Carrusel } from "../components/ui";
 
 export const HomePage = () => {
   const data = useAuth();
-  console.log(data);
+  console.log(data)
 
   return (
     <div>
+
+      <div className="hero-section">
+      <div className="content">
+        <h1 className="text-4xl font-bold">Z I L L A S</h1>
+        <p className="text-lg">Un lugar para sent(a)rte</p>
+        <button className="btn-primary">Ver más</button>
+      </div>
+    </div>
+
+    <br></br>
+
       <Card>
         <h1 className="text-3xl font-bold my-4">Home Page</h1>
         <p>
@@ -21,6 +32,10 @@ export const HomePage = () => {
           consectetur officiis provident ut!
         </p>
       </Card>
+
+      <br></br>
+
+      <Carrusel />
     </div>
   );
 };

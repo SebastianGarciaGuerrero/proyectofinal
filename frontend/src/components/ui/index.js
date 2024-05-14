@@ -4,3 +4,4 @@ export { Input } from "./Input";
 export { Label } from "./Label";
 export { Container } from "./Container";
 export { Textarea } from "./Textarea";
+export { Carrusel } from "./Carrusel";

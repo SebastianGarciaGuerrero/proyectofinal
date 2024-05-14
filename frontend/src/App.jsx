@@ -36,6 +36,14 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route
+              path="/products"
+              element={
+                <ProductProvider>
+                  <ProductsPage />
+                </ProductProvider>
+              }
+            />
           </Route>
 
           <Route
@@ -50,7 +58,6 @@ function App() {
                 </ProductProvider>
               }
             >
-              <Route path="/products" element={<ProductsPage />} />
               <Route path="/products/new" element={<ProductFormPage />} />
               <Route path="/products/:id/edit" element={<ProductFormPage />} />
             </Route>
