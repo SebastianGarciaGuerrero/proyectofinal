@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 body {
-  background: #101010;
-  color:aliceblue;
+  background: #ffffff;
+  color:rgb(38, 40, 41);
 }
 
 .hero-section {
-  background-image: url('https://i.pinimg.com/564x/ba/56/68/ba56686b0b85282c34d5fd29f52e61aa.jpg');
+  background-image: url('https://img.freepik.com/vector-gratis/pila-libros-diseno-plano-dibujado-mano_23-2149334862.jpg');
   background-size: contain; /* Para mantener la relación de aspecto de la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   background-position: right center; /* Ajusta la posición de la imagen */
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   height: 400px; /* Ajusta la altura según sea necesario */
   display: flex;
   justify-content: center;
@@ -25,6 +25,6 @@ body {
 }
 
 .content {
-  background-color: #f2f2f2; /* Color de fondo blanco */
+  background-color: #ffffff; /* Color de fondo blanco */
   padding: 20px; /* Añade relleno para separar el texto del borde */
 }

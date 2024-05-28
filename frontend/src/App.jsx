@@ -4,6 +4,7 @@ import { useAuth } from "./context/AuthContext";
 import { ProductProvider } from "./context/ProductContext";
 
 import { Navbar } from "./components/navbar/Navbar";
+import { Footer } from "./components/footer/Footer";
 import { Container } from "./components/ui";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
@@ -68,6 +69,9 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
+
+      <Footer />
+
     </>
   );
 }

@@ -2,24 +2,32 @@ import { BiTask } from "react-icons/bi";
 import { MdTaskAlt } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+
+
 
 export const publicRoutes = [
   {
-    name: "Products",
+    name: "Productos",
     path: "/products",
     icon: <BiTask className="w-5 h-5" />,
   },
   {
-    name: "About",
+    name: "Nosotros",
     path: "/about",
   },
   {
-    name: "Login",
+    name: "Iniciar sesión",
     path: "/login",
   },
   {
-    name: "Register",
+    name: "Registrarse",
     path: "/register",
+  },
+  {
+    name: <FontAwesomeIcon icon={faCartShopping} />,
+    path: "/Cart",
   },
 ];
 
@@ -35,7 +43,7 @@ export const privateRoutes = [
     icon: <MdTaskAlt className="w-5 h-5" />,
   },
   {
-    name: "Profile",
+    name: "Perfil",
     path: "/profile",
     icon: <CgProfile className="w-5 h-5" />,
   },
