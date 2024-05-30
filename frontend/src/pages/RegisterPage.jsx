@@ -1,7 +1,9 @@
 import { Button, Input, Card, Label, Container } from "../components/ui";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthProvider";
+import { useContext } from "react";
+
 
 export const RegisterPage = () => {
   const {
@@ -9,7 +11,7 @@ export const RegisterPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signup, errors: signupErrors } = useAuth();
+  const { signup, errors: signupErrors } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {

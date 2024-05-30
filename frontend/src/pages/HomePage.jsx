@@ -1,9 +1,10 @@
-import { useAuth } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthProvider";
 import { Carrusel } from "../components/ui";
+import { useContext } from "react";
 
 
 export const HomePage = () => {
-  const data = useAuth();
+  const data = useContext(AuthContext);
   console.log(data)
 
   return (

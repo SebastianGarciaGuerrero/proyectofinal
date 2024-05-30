@@ -7,15 +7,15 @@ import {
   updateProductRequest,
 } from "../api/products.api";
 
-const ProductContext = createContext();
+export const ProductContext = createContext();
 
-export const useProducts = () => {
-  const context = useContext(ProductContext);
-  if (!context) {
-    throw new Error("useProducts debe estar dentro del proveedor ProductProvider");
-  }
-  return context;
-};
+// export const useProducts = () => {
+//   const context = useContext(ProductContext);
+//   if (!context) {
+//     throw new Error("useProducts debe estar dentro del proveedor ProductProvider");
+//   }
+//   return context;
+//};
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);

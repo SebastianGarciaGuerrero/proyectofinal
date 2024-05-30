@@ -1,14 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import { publicRoutes, privateRoutes } from "./navigation";
 import { Container } from "../ui";
-import { useAuth } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthProvider";
 import { twMerge } from "tailwind-merge";
 import { IoMdLogOut } from "react-icons/io";
+import { useContext } from "react";
 
 export const Navbar = () => {
   const location = useLocation();
 
-  const { isAuth, signout, user } = useAuth();
+  const { isAuth, signout, user } = useContext(AuthContext);
 
   return (
     <nav className="bg-zinc-950">

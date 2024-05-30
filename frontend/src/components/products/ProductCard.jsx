@@ -1,11 +1,13 @@
 import { Card, Button } from "../ui";
-import { useProducts } from "../../context/ProductContext";
 import { useNavigate } from "react-router-dom";
 import { PiTrashSimpleLight } from "react-icons/pi";
 import { BiPencil } from "react-icons/bi";
+import { useContext } from "react";
+import { ProductContext } from "../../context/ProductProvider";
+
 
 export const ProductCard = ({ product }) => {
-  const { deleteProduct } = useProducts();
+  const { deleteProduct } = useContext(ProductContext);
   const navigate = useNavigate();
 
   return (

@@ -1,11 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import { Container } from "../ui";
-import { useAuth } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthProvider";
 import { IoMdLogOut } from "react-icons/io";
+import { useContext } from "react";
 
 export const Footer = () => {
   const location = useLocation();
-  const { isAuth, signout, user } = useAuth();
+  const { isAuth, signout, user } = useContext(AuthContext);
 
   return (
     <nav className="bg-gray-100  border-t-2 mt-10">

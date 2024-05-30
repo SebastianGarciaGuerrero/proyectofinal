@@ -12,9 +12,9 @@ import { createProductSchema, updateProductSchema } from "../schemas/product.sch
 
 const router = Router();
 
-router.get("/products", isAuth, getAllProducts);
+router.get("/products", getAllProducts);
 
-router.get("/products/:id", isAuth, getProduct);
+router.get("/products/:id", getProduct);
 
 router.post("/products", isAuth, validateSchema(createProductSchema), createProduct);
 

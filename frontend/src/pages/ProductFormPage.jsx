@@ -1,8 +1,8 @@
 import { Card, Input, Label, Textarea, Button } from "../components/ui";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useProducts } from "../context/ProductContext";
+import { useContext, useEffect } from "react";
+import { ProductContext } from "../context/ProductProvider";
 
 export const ProductFormPage = () => {
   const {
@@ -12,7 +12,7 @@ export const ProductFormPage = () => {
     setValue,
   } = useForm();
   const navigate = useNavigate();
-  const { createProduct, updateProduct, loadProduct, errors: productsErrors } = useProducts();
+  const { createProduct, updateProduct, loadProduct, errors: productsErrors } = useContext(ProductContext);
   const params = useParams();
 
   const onSubmit = handleSubmit(async (data) => {
