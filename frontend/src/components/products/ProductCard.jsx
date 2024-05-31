@@ -10,6 +10,14 @@ export const ProductCard = ({ product }) => {
   const { deleteProduct } = useContext(ProductContext);
   const navigate = useNavigate();
 
+  const formatPriceToCLP = (price) => {
+    if (price == null) {
+      return 'Precio no disponible';
+    }
+    const roundedPrice = Math.floor(price);
+    return `$${roundedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
+  };
+
   return (
     <Card key={product.id} className="px-7 py-4 flex flex-col justify-center">
       <div>
@@ -22,7 +30,7 @@ export const ProductCard = ({ product }) => {
           />
         )}
         <p>{product.description}</p>
-        <p className="text-2xl font-bold">$ {product.price}</p>
+        <p className="text-2xl font-bold">{formatPriceToCLP(product.price)}</p>
       </div>
       <div className="my-2 flex justify-end gap-x-2">
         <Button onClick={() => navigate(`/products/${product.id}/edit`)}>
