@@ -14,7 +14,7 @@ export const Navbar = () => {
     <nav className="bg-zinc-950">
       <Container className="flex justify-between py-3">
         <Link to="/">
-          <h1 className="font-bold text-2xl">Z I L L A S</h1>
+          <h1 className="font-bold text-2xl py-8 text-white">Z A L I S</h1>
         </Link>
         <ul className="flex items-center justify-center md:gap-x-2">
           {isAuth ? (
@@ -56,7 +56,7 @@ export const Navbar = () => {
               <li
                 className={twMerge(
                   "text-slate-300 flex items-center px-3 py-1",
-                  location.pathname === path && "bg-sky-500 px-3 py-1"
+                  location.pathname === path && "text-sky-500 px-3 py-1"
                 )}
                 key={path}
               >
