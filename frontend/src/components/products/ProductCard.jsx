@@ -26,7 +26,7 @@ export const ProductCard = ({ product }) => {
           <img
             src={product.image_url}
             alt={`Imagen de ${product.title}`}
-            className="my-4"
+            className="my-4 w-full h-auto object-cover"
           />
         )}
         <p>{product.description}</p>
