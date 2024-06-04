@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import { AuthProvider, AuthContext } from "./context/AuthProvider";
 import { ProductProvider } from "./context/ProductProvider";
@@ -15,8 +15,10 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { ProductsPage } from "./pages/ProductsPage";
 import { ProductFormPage } from "./pages/ProductFormPage";
 import { ProfilePage } from "./pages/ProfilePage";
+import { Carrito } from "./pages/Carrito";
 import { NotFound } from "./pages/NotFound";
 import { useContext } from "react";
+import { CartProvider } from "./context/CartProvider";
 
 function App() {
   const { isAuth, loading } = useContext(AuthContext);
@@ -27,33 +29,36 @@ function App() {
     <>
       <ProductProvider>
         <AuthProvider>
-          <Navbar />
-          <Container className="py-5">
-            <Routes>
-              <Route
-                element={
-                  <ProtectedRoute
-                    isAllowed={!isAuth}
-                    redirectTo={"/products"}
-                  />
-                }
-              >
-                <Route path="/" element={<HomePage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/products" element={<ProductsPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/products/new" element={<ProductFormPage />} />
+          <CartProvider>
+            <Navbar />
+            <Container className="py-5">
+              <Routes>
                 <Route
-                  path="/products/:id/edit"
-                  element={<ProductFormPage />}
-                />
-              </Route>
+                  element={
+                    <ProtectedRoute
+                      isAllowed={!isAuth}
+                      redirectTo={"/products"}
+                    />
+                  }
+                >
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/products" element={<ProductsPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/products/new" element={<ProductFormPage />} />
+                  <Route
+                    path="/products/:id/edit"
+                    element={<ProductFormPage />}
+                  />
+                  <Route path="/carrito" element={<Carrito />} />
+                </Route>
 
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Container>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Container>
+          </CartProvider>
         </AuthProvider>
       </ProductProvider>
 

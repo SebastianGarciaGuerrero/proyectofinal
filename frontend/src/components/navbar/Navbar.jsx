@@ -43,14 +43,16 @@ export const Navbar = () => {
                 <IoMdLogOut className="w-5 h-5" />
                 <span className="hidden sm:block"> Logout</span>
               </li>
-              <li className="flex gap-x-1 items-center justify-center font-medium">
-                <img
-                  src={user.gravatar}
-                  alt=""
-                  className="h-8 w-8 rounded-full"
-                />
-                <span>{user.name}</span>
-              </li>
+              <Link to="/profile">
+                <li className="flex text-white gap-x-1 items-center justify-center font-medium">
+                  <img
+                    src={user.gravatar}
+                    alt=""
+                    className="h-8 w-8 rounded-full"
+                  />
+                  <span>{user.name}</span>
+                </li>
+              </Link>
             </>
           ) : (
             publicRoutes.map(({ path, name }) => (

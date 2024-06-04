@@ -12,7 +12,7 @@ export const LoginPage = () => {
   } = useForm();
   const { signin, errors: loginErrors } = useContext(AuthContext);
   const navigate = useNavigate();
-
+ 
   const onSubmit = handleSubmit(async (data) => {
     const user = await signin(data);
 

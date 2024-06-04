@@ -27,7 +27,7 @@ export const publicRoutes = [
   },
   {
     name: <FontAwesomeIcon icon={faCartShopping} />,
-    path: "/Cart",
+    path: "/carrito",
   },
 ];
 
