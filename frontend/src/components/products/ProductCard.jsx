@@ -3,6 +3,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { useCart } from "../../hooks/useCart";
 
 export const ProductCard = ({ product }) => {
+  
   const formatPriceToCLP = (price) => {
     if (price == null) {
       return "Precio no disponible";
@@ -11,7 +12,7 @@ export const ProductCard = ({ product }) => {
     return `$${roundedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
   };
 
-  const { addToCart } = useCart();
+  const { addToCart, removeFromCart, cart } = useCart();
 
   return (
     <Card key={product.id} className="px-7 py-4 flex flex-col justify-center">
@@ -28,8 +29,17 @@ export const ProductCard = ({ product }) => {
         <p className="text-2xl font-bold">{formatPriceToCLP(product.price)}</p>
       </div>
       <div className="my-2 flex justify-end gap-x-2">
-        <Button onClick={() => addToCart(product)}>
-          <MdAddShoppingCart />
+        <Button
+          onClick={() =>
+            cart.some((item) => item.id === product.id)
+              ? removeFromCart(product)
+              : addToCart(product)
+          }
+        >
+          <MdAddShoppingCart />{" "}
+          {cart.some((item) => item.id === product.id)
+            ? "Quitar del Carrito"
+            : "Agregar al Carrito"}
         </Button>
       </div>
     </Card>

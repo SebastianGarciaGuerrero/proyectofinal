@@ -54,7 +54,6 @@ function App() {
                   />
                   <Route path="/carrito" element={<Carrito />} />
                 </Route>
-
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Container>

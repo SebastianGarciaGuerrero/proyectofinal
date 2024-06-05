@@ -1,38 +1,41 @@
-import "../assets/styles/Carrito.css"
-import { useId } from "react";
-import { IoCartOutline } from "react-icons/io5";
+import "../assets/styles/Carrito.css";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import { useCart } from "../hooks/useCart";
+
+function CartItem({ image_url, title, quantity, price, addToCart }) {
+  return (
+    <li>
+      <img src={image_url} alt={`Imagen de ${title}`} />
+      <div>
+        <strong>{title}</strong> - ${price}
+      </div>
+
+      <footer>
+        <small>Cantidad: {quantity}</small>
+        <button onClick={addToCart}>+</button>
+      </footer>
+    </li>
+  );
+}
 
 export const Carrito = () => {
-  const cartCheckboxId = useId();
+  const { cart, clearCart, addToCart} = useCart();
 
   return (
-    <>
-      <label className="cart-button" htmlFor={cartCheckboxId}>
-        <IoCartOutline />
-      </label>
-      <input id={cartCheckboxId} type="checkbox" hidden />
-      <aside className="cart">
-        <ul>
-          <li>
-            <img
-              src="https://images.cdn1.buscalibre.com/fit-in/360x360/db/9c/db9c9e8b60aa7ef5bb02165dc4e6c875.jpg"
-              alt="Libro"
-            />
-            <div>
-              <strong>Libro</strong> - $4.990
-            </div>
+    <div className="cart">
+      <ul>
+        {cart.map((product) => (
+          <CartItem
+            key={product.id}
+            addToCart={() => addToCart(product)}
+            {...product}
+          />
+        ))}
+      </ul>
 
-            <footer>
-              <small>Cantidad: 1</small>
-            </footer>
-          </li>
-        </ul>
-
-        <button>
+      <button onClick={clearCart}>
         <MdOutlineRemoveShoppingCart />
-        </button>
-      </aside>
-    </>
+      </button>
+    </div>
   );
 };
