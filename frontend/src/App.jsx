@@ -19,6 +19,7 @@ import { Carrito } from "./pages/Carrito";
 import { NotFound } from "./pages/NotFound";
 import { useContext } from "react";
 import { CartProvider } from "./context/CartProvider";
+import { ProductDetail } from "./pages/ProductDetail";
 
 function App() {
   const { isAuth, loading } = useContext(AuthContext);
@@ -51,6 +52,10 @@ function App() {
                   <Route
                     path="/products/:id/edit"
                     element={<ProductFormPage />}
+                  />
+                  <Route
+                    path="/products/:id"
+                    element={<ProductDetail />}
                   />
                   <Route path="/carrito" element={<Carrito />} />
                 </Route>

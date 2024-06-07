@@ -1,27 +1,27 @@
 .cart {
   background-color: #f0f0f0;
-  border-radius: 5px; /* Rounded corners for a softer look */
+  border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 32px;
   right: 0px;
   top: 0px;
   width: 320px;
   display: flex;
-  flex-direction: column; /* Stack content vertically */
-  justify-content: space-between; /* Distribute content vertically with spacing */
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
 }
 
 .cart img {
-  width: 100%; /* Maintain image width */
-  object-fit: cover; /* Crop or scale image to fit within the container */
+  width: 100%;
+  object-fit: cover;
 }
 
 .cart li {
-  list-style: none; /* Remove default bullet points */
-  padding: 16px 0; /* Consistent padding for list items */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Faded border for separation */
+  list-style: none;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .cart footer {
@@ -29,14 +29,14 @@
   gap: 8px;
   justify-content: center;
   align-items: center;
-  padding: 16px 0; /* Padding for footer content */
+  padding: 16px 0;
 }
 
 .cart footer button {
-  background-color: #333; /* Dark gray button background */
-  color: #fff; /* White button text */
-  border: none; /* Remove default button border */
-  padding: 8px 16px; /* Consistent button padding */
-  border-radius: 3px; /* Rounded corners for buttons */
-  cursor: pointer; /* Indicate clickable behavior */
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 3px;
+  cursor: pointer;
 }

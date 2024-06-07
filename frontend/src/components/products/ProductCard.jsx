@@ -1,22 +1,16 @@
 import { Card, Button } from "../ui";
 import { MdAddShoppingCart } from "react-icons/md";
 import { useCart } from "../../hooks/useCart";
+import { formatPriceToCLP } from "../../hooks/formatPriceToCLP"
+import { Link } from "react-router-dom";
 
 export const ProductCard = ({ product }) => {
-  
-  const formatPriceToCLP = (price) => {
-    if (price == null) {
-      return "Precio no disponible";
-    }
-    const roundedPrice = Math.floor(price);
-    return `$${roundedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
-  };
 
   const { addToCart, removeFromCart, cart } = useCart();
 
   return (
     <Card key={product.id} className="px-7 py-4 flex flex-col justify-center">
-      <div>
+      <Link to={`/products/${product.id}`} className="no-underline">
         {product.image_url && (
           <img
             src={product.image_url}
@@ -27,9 +21,10 @@ export const ProductCard = ({ product }) => {
         <h1 className="text-2xl font-bold">{product.title}</h1>
         <p>{product.description}</p>
         <p className="text-2xl font-bold">{formatPriceToCLP(product.price)}</p>
-      </div>
+      </Link>
       <div className="my-2 flex justify-end gap-x-2">
-        <Button className="bg-slate-500 mx-auto"
+        <Button
+          className="bg-slate-500 mx-auto"
           onClick={() =>
             cart.some((item) => item.id === product.id)
               ? removeFromCart(product)
