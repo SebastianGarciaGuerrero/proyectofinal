@@ -39,16 +39,16 @@ export const cartReducer = (state, action) => {
       updateLocalStorage(newState);
       return newState;
     }
-
     case CART_ACTIONS_TYPES.DECREASE_QUANTITY: {
       const { id } = actionPayload;
       const productInCartIndex = state.findIndex((item) => item.id === id);
-
+    
       if (productInCartIndex >= 0) {
         const newState = [...state];
-        if (newState[productInCartIndex].quantity > 1) {
+        if (newState[productInCartIndex].quantity > 0) {
           newState[productInCartIndex].quantity -= 1;
-        } else {
+        }
+        if (newState[productInCartIndex].quantity === 0) {
           newState.splice(productInCartIndex, 1);
         }
         console.log("Updated state after DECREASE_QUANTITY:", newState);
@@ -57,6 +57,7 @@ export const cartReducer = (state, action) => {
       }
       return state;
     }
+    
     
     case CART_ACTIONS_TYPES.REMOVE_FROM_CART: {
       const { id } = actionPayload;
