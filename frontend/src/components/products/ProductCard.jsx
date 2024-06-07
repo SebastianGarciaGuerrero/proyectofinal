@@ -17,19 +17,19 @@ export const ProductCard = ({ product }) => {
   return (
     <Card key={product.id} className="px-7 py-4 flex flex-col justify-center">
       <div>
-        <h1 className="text-2xl font-bold">{product.title}</h1>
         {product.image_url && (
           <img
             src={product.image_url}
             alt={`Imagen de ${product.title}`}
-            className="my-4 w-full h-auto object-cover"
+            className="w-full h-48 object-cover"
           />
         )}
+        <h1 className="text-2xl font-bold">{product.title}</h1>
         <p>{product.description}</p>
         <p className="text-2xl font-bold">{formatPriceToCLP(product.price)}</p>
       </div>
       <div className="my-2 flex justify-end gap-x-2">
-        <Button
+        <Button className="bg-slate-500 mx-auto"
           onClick={() =>
             cart.some((item) => item.id === product.id)
               ? removeFromCart(product)

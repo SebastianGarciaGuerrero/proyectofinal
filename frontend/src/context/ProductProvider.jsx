@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState} from "react";
 import {
   getAllProductsRequest,
   deleteProductRequest,
@@ -8,14 +8,6 @@ import {
 } from "../api/products.api";
 
 export const ProductContext = createContext();
-
-// export const useProducts = () => {
-//   const context = useContext(ProductContext);
-//   if (!context) {
-//     throw new Error("useProducts debe estar dentro del proveedor ProductProvider");
-//   }
-//   return context;
-//};
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);

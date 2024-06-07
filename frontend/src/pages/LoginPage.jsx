@@ -2,7 +2,7 @@ import { Card, Input, Button, Label, Container } from "../components/ui";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthProvider";
-import { useContext } from "react";
+import { useContext} from "react";
 
 export const LoginPage = () => {
   const {

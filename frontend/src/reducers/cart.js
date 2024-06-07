@@ -5,6 +5,8 @@ export const CART_ACTIONS_TYPES = {
   ADD_TO_CART: "ADD_TO_CART",
   REMOVE_FROM_CART: "REMOVE_FROM_CART",
   CLEAR_CART: "CLEAR_CART",
+  DECREASE_QUANTITY: "DECREASE_QUANTITY",
+  TOTAL_PRICE: "TOTAL_PRICE",
 };
 
 export const updateLocalStorage = (state) => {
@@ -38,6 +40,24 @@ export const cartReducer = (state, action) => {
       return newState;
     }
 
+    case CART_ACTIONS_TYPES.DECREASE_QUANTITY: {
+      const { id } = actionPayload;
+      const productInCartIndex = state.findIndex((item) => item.id === id);
+
+      if (productInCartIndex >= 0) {
+        const newState = [...state];
+        if (newState[productInCartIndex].quantity > 1) {
+          newState[productInCartIndex].quantity -= 1;
+        } else {
+          newState.splice(productInCartIndex, 1);
+        }
+        console.log("Updated state after DECREASE_QUANTITY:", newState);
+        updateLocalStorage(newState);
+        return newState;
+      }
+      return state;
+    }
+    
     case CART_ACTIONS_TYPES.REMOVE_FROM_CART: {
       const { id } = actionPayload;
       const newState = state.filter((item) => item.id !== id);
@@ -48,6 +68,13 @@ export const cartReducer = (state, action) => {
     case CART_ACTIONS_TYPES.CLEAR_CART: {
       updateLocalStorage([]);
       return [];
+    }
+
+    case CART_ACTIONS_TYPES.TOTAL_PRICE: {
+      return state.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
     }
   }
   return state;
