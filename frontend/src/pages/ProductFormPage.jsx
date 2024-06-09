@@ -48,10 +48,10 @@ export const ProductFormPage = () => {
           </p>
         ))}
         <h2 className="text-3xl font-bold my-4">
-          {params.id ? "Edit product" : "Crear product"}
+          {params.id ? "Editar producto" : "Crear producto"}
         </h2>
         <form onSubmit={onSubmit} encType="multipart/form-data">
-          <Label htmlFor="title">Title</Label>
+          <Label htmlFor="title">Titulo</Label>
           <Input
             type="text"
             placeholder="Title"
@@ -71,7 +71,7 @@ export const ProductFormPage = () => {
             {...register("image_url")}
           />
 
-          <Label htmlFor="description"> Description </Label>
+          <Label htmlFor="description"> Descripción </Label>
           <Textarea
             placeholder="Description"
             rows={3}
@@ -85,7 +85,7 @@ export const ProductFormPage = () => {
             {...register("price")}
           />
 
-          <Button>{params.id ? "Edit product" : "Crear product"}</Button>
+          <Button>{params.id ? "Edit product" : "Crear producto"}</Button>
         </form>
       </Card>
     </div>
