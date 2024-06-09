@@ -58,7 +58,7 @@ export const RegisterPage = () => {
           {errors.password && (
             <p className="text-red-500"> Password is required </p>
           )}
-          <Button>Register</Button>
+          <Button>Registrarse</Button>
 
           <div className="flex justify-between my-4">
             <p className="mr-4">¿Ya tienes una cuenta?</p>
