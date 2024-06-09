@@ -28,3 +28,12 @@ body {
   background-color: #ffffff; /* Color de fondo blanco */
   padding: 20px; /* Añade relleno para separar el texto del borde */
 }
+
+h2{
+  text-align: center;
+  color:dodgerblue;
+}
+
+.profile-table{
+  align-content: center;
+}
