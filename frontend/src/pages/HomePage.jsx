@@ -22,7 +22,7 @@ export const HomePage = () => {
 
       <br></br>
 
-      <Carrusel />
+        {/* <Carrusel />*/}
     </div>
 
   );
