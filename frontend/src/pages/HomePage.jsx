@@ -14,7 +14,7 @@ export const HomePage = () => {
       <div className="content">
         <h1 className="text-4xl font-bold">Z A L I S</h1>
         <p className="text-lg">Libros usados al mejor precio</p>
-        <button className="btn-primary">Ver más</button>
+        {/* <button className="btn-primary">Ver más</button> */}
       </div>
     </div>
 

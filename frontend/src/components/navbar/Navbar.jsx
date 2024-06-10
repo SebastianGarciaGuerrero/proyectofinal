@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { publicRoutes, privateRoutes } from "./navigation";
 import { Container } from "../ui";
 import { AuthContext } from "../../context/AuthProvider";
@@ -8,8 +8,14 @@ import { useContext } from "react";
 
 export const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const { isAuth, signout, user } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    signout();
+    navigate("/login");
+  }
 
   return (
     <nav className="bg-zinc-950">
@@ -36,9 +42,7 @@ export const Navbar = () => {
               ))}
               <li
                 className="text-slate-300 flex items-center px-3 py-1 hover:cursor-pointer"
-                onClick={() => {
-                  signout();
-                }}
+                onClick={handleLogout}
               >
                 <IoMdLogOut className="w-5 h-5" />
                 <span className="hidden sm:block"> Logout</span>
@@ -47,7 +51,7 @@ export const Navbar = () => {
                 <li className="flex text-white gap-x-1 items-center justify-center font-medium">
                   <img
                     src={user.gravatar}
-                    alt=""
+                    alt="Avatar"
                     className="h-8 w-8 rounded-full"
                   />
                   <span>{user.name}</span>

@@ -54,7 +54,7 @@ export const ProductFormPage = () => {
           <Label htmlFor="title">Titulo</Label>
           <Input
             type="text"
-            placeholder="Title"
+            placeholder="Inserte Titulo"
             autoFocus
             {...register("title", {
               required: true,
@@ -73,7 +73,7 @@ export const ProductFormPage = () => {
 
           <Label htmlFor="description"> Descripción </Label>
           <Textarea
-            placeholder="Description"
+            placeholder="Inserte Descripcion"
             rows={3}
             {...register("description")}
           ></Textarea>
@@ -81,7 +81,7 @@ export const ProductFormPage = () => {
           <Label htmlFor="price">Precio</Label>
           <Input
             type="text"
-            placeholder="Precio"
+            placeholder="Inserte Precio"
             {...register("price")}
           />
 
