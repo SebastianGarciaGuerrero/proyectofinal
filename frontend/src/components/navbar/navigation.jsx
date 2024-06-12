@@ -47,4 +47,4 @@ export const privateRoutes = [
   name: "Agregar",
   path: "/products/new",
   icon: <MdTaskAlt className="w-5 h-5" />,
-},*/},
+},*/}
