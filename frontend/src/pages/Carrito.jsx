@@ -3,6 +3,8 @@ import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 import { useCart } from "../hooks/useCart";
 import { formatPriceToCLP } from "../hooks/formatPriceToCLP";
 import { Link } from "react-router-dom";
+import { Button } from "../ui";
+
 
 function CartItem({
   image_url,
