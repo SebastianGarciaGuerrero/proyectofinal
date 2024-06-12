@@ -9,7 +9,7 @@ export const ProductCard = ({ product }) => {
   const { addToCart, removeFromCart, cart } = useCart();
 
   return (
-    <Card key={product.id} className="px-7 py-4 flex flex-col justify-center items-center">
+    <Card key={product.id} className="px-7 py-4 flex flex-col justify-between items-center">
       <Link to={`/products/${product.id}`} className="no-underline">
         {product.image_url && (
           <img

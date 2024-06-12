@@ -24,7 +24,7 @@ export const LoginPage = () => {
       <Card>
         {loginErrors &&
           loginErrors.map((err) => (
-            <p className="text-red-500 text-center">{err}</p>
+            <p className="text-red-500 text-center">Usuario no encontrado</p>
           ))}
 
         <h1 className="text-4xl font-bold my-2 text-center">Iniciar sesión</h1>
