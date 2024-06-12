@@ -3,10 +3,12 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { useCart } from "../../hooks/useCart";
 import { formatPriceToCLP } from "../../hooks/formatPriceToCLP"
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
 
 export const ProductCard = ({ product }) => {
-
   const { addToCart, removeFromCart, cart } = useCart();
+  const { isAuth } = useContext(AuthContext);
 
   return (
     <Card key={product.id} className="px-7 py-4 flex flex-col justify-between items-center">
@@ -22,21 +24,23 @@ export const ProductCard = ({ product }) => {
         <p>{product.description}</p>
         <p className="text-2xl font-bold text-center">{formatPriceToCLP(product.price)}</p>
       </Link>
-      <div className="my-2 flex justify-end gap-x-2">
-        <Button
-          className="bg-slate-500 mx-auto"
-          onClick={() =>
-            cart.some((item) => item.id === product.id)
-              ? removeFromCart(product)
-              : addToCart(product)
-          }
-        >
-          <MdAddShoppingCart />{" "}
-          {cart.some((item) => item.id === product.id)
-            ? "Quitar del Carrito"
-            : "Agregar al Carrito"}
-        </Button>
-      </div>
+      {isAuth && ( // Condición para mostrar el botón solo si el usuario está autenticado
+        <div className="my-2 flex justify-end gap-x-2">
+          <Button
+            className="bg-slate-500 mx-auto"
+            onClick={() =>
+              cart.some((item) => item.id === product.id)
+                ? removeFromCart(product)
+                : addToCart(product)
+            }
+          >
+            <MdAddShoppingCart />{" "}
+            {cart.some((item) => item.id === product.id)
+              ? "Quitar del Carrito"
+              : "Agregar al Carrito"}
+          </Button>
+        </div>
+      )}
     </Card>
   );
 };

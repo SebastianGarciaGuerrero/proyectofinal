@@ -8,13 +8,13 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export const publicRoutes = [
   {
+    name: "Nosotros",
+    path: "/about",
+  },
+  {
     name: "Libros",
     path: "/products",
     icon: <BiTask className="w-5 h-5" />,
-  },
-  {
-    name: "Nosotros",
-    path: "/about",
   },
   {
     name: "Iniciar sesión",
@@ -28,13 +28,13 @@ export const publicRoutes = [
 
 export const privateRoutes = [
   {
+    name: "Nosotros",
+    path: "/about",
+  },
+  {
     name: "Libros",
     path: "/products",
     icon: <BiTask className="w-5 h-5" />,
-  },
-  {
-    name: "Nosotros",
-    path: "/about",
   },
   {
     name: "Carrito",
