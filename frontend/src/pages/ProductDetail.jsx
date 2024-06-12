@@ -41,7 +41,7 @@ export const ProductDetail = () => {
 
   return (
     <div className="product-detail">
-      <img src={product.image_url} alt={`Imagen de ${product.title}`} />
+      <img src={product.image_url} alt={`Imagen de ${product.title}`} className="w-50 h-50 object-cover" />
       <h1 className="text-3xl font-bold">{product.title}</h1>
       <p>{product.description}</p>
       <p className="text-2xl font-bold">{formatPriceToCLP(product.price)}</p>

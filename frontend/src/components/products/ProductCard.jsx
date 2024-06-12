@@ -9,7 +9,7 @@ export const ProductCard = ({ product }) => {
   const { addToCart, removeFromCart, cart } = useCart();
 
   return (
-    <Card key={product.id} className="px-7 py-4 flex flex-col justify-center">
+    <Card key={product.id} className="px-7 py-4 flex flex-col justify-center items-center">
       <Link to={`/products/${product.id}`} className="no-underline">
         {product.image_url && (
           <img
@@ -18,9 +18,9 @@ export const ProductCard = ({ product }) => {
             className="w-full h-48 object-cover"
           />
         )}
-        <h1 className="text-2xl font-bold">{product.title}</h1>
+        <h1 className="text-2xl font-bold text-center">{product.title}</h1>
         <p>{product.description}</p>
-        <p className="text-2xl font-bold">{formatPriceToCLP(product.price)}</p>
+        <p className="text-2xl font-bold text-center">{formatPriceToCLP(product.price)}</p>
       </Link>
       <div className="my-2 flex justify-end gap-x-2">
         <Button
