@@ -14,7 +14,7 @@ function CartItem({
 }) {
   return (
     <li>
-      <img src={image_url} alt={`Imagen de ${title}`} />
+      <img src={image_url} alt={`Imagen de ${title}`} className="w-32 h-32 object-cover" />
       <div>
         <strong>{title}</strong> - <p>{formatPriceToCLP(price)}</p>
       </div>
