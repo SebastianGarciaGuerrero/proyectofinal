@@ -60,9 +60,9 @@ export const Carrito = () => {
               <MdOutlineRemoveShoppingCart />
             </button>
             <p>Total: {formatPriceToCLP(totalPrice)}</p>
-            <button className={cart.length > 0 ? "bg-slate-500 mx-auto" : "hidden"}>
+            <Button className={cart.length > 0 ? "bg-slate-500 mx-auto my-4 flex flex-col justify-center" : "hidden"}>
               Comprar
-            </button>
+            </Button>
           </>
         )}
       </div>
