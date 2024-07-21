@@ -8,8 +8,8 @@ export const Footer = () => {
       <Container className="flex justify-center py-3">
         <Link to="/">
           <ul className="text-center">
-          <li className="font-bold text-3xl py-8 text-black">Z A L I S</li>
-          <li className="font-light text-2xs  text-gray-500">contacto@zalis.com </li>
+          <li className="font-bold text-3xl py-8 text-black">Z I L L A S</li>
+          <li className="font-light text-2xs  text-gray-500">contacto@zillas.com </li>
           <li className="font-light text-2xs  text-gray-500 pb-10">Desarrollo: Sebastián García - Andrés Restrepo - David Bravo </li>
           </ul>
         </Link>

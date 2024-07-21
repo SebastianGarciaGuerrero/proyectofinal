@@ -8,11 +8,11 @@ body {
 }
 
 .hero-section {
-  background-image: url('https://img.freepik.com/vector-gratis/pila-libros-diseno-plano-dibujado-mano_23-2149334862.jpg');
+  background-image: url('https://i.pinimg.com/564x/16/ce/19/16ce19bbc7be2b5915271a44d58cf5ae.jpg');
   background-size: contain; /* Para mantener la relación de aspecto de la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   background-position: right center; /* Ajusta la posición de la imagen */
-  background-color: #ffffff;
+  background-color: #f0cc80;
   height: 400px; /* Ajusta la altura según sea necesario */
   display: flex;
   justify-content: center;
@@ -25,7 +25,7 @@ body {
 }
 
 .content {
-  background-color: #ffffff; /* Color de fondo blanco */
+  background-color: #f0cc80; /* Color de fondo blanco */
   padding: 20px; /* Añade relleno para separar el texto del borde */
 }
 
