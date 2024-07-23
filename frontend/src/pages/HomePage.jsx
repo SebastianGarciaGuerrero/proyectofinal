@@ -22,6 +22,10 @@ export const HomePage = () => {
 
       <br></br>
 
+      <h1 className="text-4xl font-bold">Sillas recién agregadas!</h1>
+
+      <br></br>
+
       <Carrusel />
     </div>
 

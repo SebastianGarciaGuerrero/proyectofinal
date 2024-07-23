@@ -12,7 +12,7 @@ export const publicRoutes = [
     path: "/about",
   },
   {
-    name: "Libros",
+    name: "Catálogo",
     path: "/products",
     icon: <BiTask className="w-5 h-5" />,
   },
