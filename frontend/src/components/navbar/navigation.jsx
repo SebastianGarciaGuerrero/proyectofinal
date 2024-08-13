@@ -1,8 +1,8 @@
 import { BiTask } from "react-icons/bi";
-import { MdTaskAlt } from "react-icons/md";
+/* import { MdTaskAlt } from "react-icons/md"; */
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+/* import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'; */
 
 
 
