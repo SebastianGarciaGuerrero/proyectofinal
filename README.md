@@ -1,7 +1,6 @@
 Proyecto Final Bootcamp FullStack JavaScript - Desafio Latam
 
-Ecommerce Libros Usados - Zalis 
-https://zillas.up.railway.app/
+Ecommerce de Sillas de diseñador
 
 Sebastian Garcia Guerrero    
 David Bravo Cisterna    
