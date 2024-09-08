@@ -5,8 +5,8 @@ import cors from "cors";
 
 import productRoutes from "./routes/products.routes.js";
 import authRoutes from "./routes/auth.routes.js";
-import { ORIGIN } from "./database/config.js";
-import { pool } from "./database/db.js";
+import { ORIGIN } from "../database/config.js";
+import { pool } from "../database/db.js";
 
 const app = express();
 

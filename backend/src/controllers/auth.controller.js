@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { pool } from "../database/db.js";
+import { pool } from "../../database/db.js";
 import { createAccessToken } from "../libs/jwt.js";
 import md5 from 'md5'
 
