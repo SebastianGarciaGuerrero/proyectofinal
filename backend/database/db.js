@@ -18,3 +18,11 @@ export const pool = new pg.Pool({
 pool.on("connect", () => {
   console.log("Database connected");
 });
+
+pool.connect((err, client, release) => {
+  if (err) {
+    return console.error("Error connecting to the database:", err.stack);
+  }
+  console.log("Manual connection test: Database connected");
+  release();
+});
