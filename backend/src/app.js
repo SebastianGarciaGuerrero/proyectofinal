@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-app.get("/", (req, res) => res.json({ message: " Bienvenido a mi API" }));
+app.get("/", (req, res) => res.json({ message: "Bienvenido a mi API" }));
 app.get("/api/ping", async (req, res) => {
   const result = await pool.query("SELECT NOW()");
   return res.json(result.rows[0]);
